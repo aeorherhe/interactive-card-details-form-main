@@ -67,7 +67,8 @@ body {
 .card-front {
   background-repeat: no-repeat;
   background-size: contain;
-  background: url(../images/bg-card-front.png);
+  background-position: center;
+  background-image: url(../images/bg-card-front.png);
   left: 20px;
   top: 120px;
   z-index: 999;
@@ -92,7 +93,8 @@ body {
 .card.card-back {
   background-repeat: no-repeat;
   background-size: cover;
-  background: url(../images/bg-card-back.png);
+  background-position: center;
+  background-image: url(../images/bg-card-back.png);
   position: absolute;
   right: 20px;
   top: 20px;
@@ -239,7 +241,6 @@ input:focus {
   }
 
   .all-cards {
-    border: 2px solid red;
     margin: 0;
     position: relative;
   }

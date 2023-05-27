@@ -9,14 +9,6 @@ const cardExpYear = document.getElementById("card-exp-year");
 const cardCvc = document.getElementById("card-cvc");
 const datesErrorMsg = document.querySelector(".dates-error-msg");
 
-// replace display card details with user input
-const cardDisplayNumber = document.querySelector(".card-number");
-let cardDisplayName = document.querySelector(".card-holder");
-const cardDisplayDates = document.querySelector(".exp-dates");
-const cardDisplayCvc = document.querySelector(".card-cvc");
-
-// console.log(nameRegex);
-
 // funcion for input event listener
 function inputEventListener(input, datesInput) {
   input.forEach(function (input) {
@@ -30,12 +22,9 @@ function inputEventListener(input, datesInput) {
     });
   });
   datesInput.forEach(function (dates) {
-    // console.log(dates.value);
     dates.addEventListener("input", function () {
-      // console.log(dates);
       if (!dates.value.length) {
         dates.parentElement.classList.add("invalid");
-        // datesErrorMsg.textContent = "";
       } else {
         dates.parentElement.classList.remove("invalid");
         datesErrorMsg.textContent = "";
@@ -43,6 +32,26 @@ function inputEventListener(input, datesInput) {
     });
   });
 }
+
+// function to display content
+function displayContents(inputs) {
+  // replace display card details with user input
+  const cardDisplayNumber = document.querySelector(".card-number");
+  let cardDisplayName = document.querySelector(".card-holder");
+  const cardDisplayDates = document.querySelector(".exp-dates");
+  const cardDisplayCvc = document.querySelector(".card-cvc");
+  inputs.forEach(function (input) {
+    input.addEventListener("input", function () {
+      console.log(input.value);
+      cardDisplayName.textContent = cardHolderName.value;
+      cardDisplayNumber.textContent = cardNumber.value;
+      cardDisplayDates.textContent = `${cardExpMonth.value}/${cardExpYear.value}`;
+      cardDisplayCvc.textContent = cardCvc.value;
+    });
+  });
+}
+
+displayContents(inputs);
 
 // function to validate month/year
 function validateDates() {
@@ -66,15 +75,10 @@ function validateDates() {
     cardExpYear.parentElement.classList.add("invalid");
     cardExpMonth.parentElement.classList.remove("invalid");
     datesErrorMsg.textContent = "Can't be blank";
-  }
-  // else {
-  //   cardExpYear.parentElement.classList.remove("invalid");
-  //   cardExpMonth.parentElement.classList.remove("invalid");
-  //   datesErrorMsg.textContent = "";
-  // }
-
-  // check
-  else if (Number(cardExpMonth.value) > 12 || Number(cardExpMonth.value) == 0) {
+  } else if (
+    Number(cardExpMonth.value) > 12 ||
+    Number(cardExpMonth.value) == 0
+  ) {
     console.log(cardExpMonth.value);
     cardExpMonth.parentElement.classList.add("invalid");
     datesErrorMsg.textContent = "Invalid month";
@@ -159,12 +163,6 @@ form.addEventListener("submit", function (e) {
   validateInput(cardHolderName, 2);
   validateInput(cardNumber, 16, isNaN(cardNumber.value));
   validateInput(cardCvc, 3, isNaN(cardCvc.value));
-
-  // card display information
-  cardDisplayName.textContent = cardHolderName.value;
-  cardDisplayNumber.textContent = cardNumber.value;
-  cardDisplayDates.textContent = `${cardExpMonth.value}/${cardExpYear.value}`;
-  cardDisplayCvc.textContent = cardCvc.value;
 
   // other conditions
   const nameRegex = /^[a-zA-Z\s\.]*$/;

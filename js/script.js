@@ -37,12 +37,11 @@ function inputEventListener(input, datesInput) {
 function displayContents(inputs) {
   // replace display card details with user input
   const cardDisplayNumber = document.querySelector(".card-number");
-  let cardDisplayName = document.querySelector(".card-holder");
+  const cardDisplayName = document.querySelector(".card-holder");
   const cardDisplayDates = document.querySelector(".exp-dates");
   const cardDisplayCvc = document.querySelector(".card-cvc");
   inputs.forEach(function (input) {
     input.addEventListener("input", function () {
-      console.log(input.value);
       cardDisplayName.textContent = cardHolderName.value;
       cardDisplayNumber.textContent = cardNumber.value;
       cardDisplayDates.textContent = `${cardExpMonth.value}/${cardExpYear.value}`;

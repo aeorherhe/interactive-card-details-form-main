@@ -38,14 +38,23 @@ function displayContents(inputs) {
   // replace display card details with user input
   const cardDisplayNumber = document.querySelector(".card-number");
   const cardDisplayName = document.querySelector(".card-holder");
-  const cardDisplayDates = document.querySelector(".exp-dates");
+  const cardDisplayMonth = document.querySelector(".exp-month");
+  const cardDisplayYear = document.querySelector(".exp-year");
   const cardDisplayCvc = document.querySelector(".card-cvc");
+
   inputs.forEach(function (input) {
     input.addEventListener("input", function () {
-      cardDisplayName.textContent = cardHolderName.value;
-      cardDisplayNumber.textContent = cardNumber.value;
-      cardDisplayDates.textContent = `${cardExpMonth.value}/${cardExpYear.value}`;
-      cardDisplayCvc.textContent = cardCvc.value;
+      if (input.id == "card-holder") {
+        cardDisplayName.textContent = input.value;
+      } else if (input.id == "card-number") {
+        cardDisplayNumber.textContent = input.value;
+      } else if (input.id == "card-exp-month") {
+        cardDisplayMonth.textContent = input.value;
+      } else if (input.id == "card-exp-year") {
+        cardDisplayYear.textContent = input.value;
+      } else if (input.id == "card-cvc") {
+        cardDisplayCvc.textContent = input.value;
+      }
     });
   });
 }

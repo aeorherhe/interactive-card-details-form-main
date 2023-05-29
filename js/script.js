@@ -169,7 +169,7 @@ form.addEventListener("submit", function (e) {
 
   // validate inputs
   validateInput(cardHolderName, 2);
-  validateInput(cardNumber, 16, isNaN(cardNumber.value));
+  validateInput(cardNumber, 15, isNaN(cardNumber.value));
   validateInput(cardCvc, 3, isNaN(cardCvc.value));
 
   // other conditions
